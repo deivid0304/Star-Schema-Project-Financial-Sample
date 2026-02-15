@@ -1,0 +1,67 @@
+erDiagram
+    F_Sales ||--o{ D_Products : "contains"
+    F_Sales ||--o{ D_Product_Details : "details"
+    F_Sales ||--o{ D_Discounts : "applies"
+    F_Sales ||--o{ D_Details : "complements"
+    F_Sales ||--o{ D_Calendar : "occurs on"
+
+    D_Products {
+        int Product_ID PK
+        string Product
+        float Average_Units_Sold
+        float Average_Sales_Value
+        float Median_Sales_Value
+        float Maximum_Sales_Value
+        float Minimum_Sales_Value
+    }
+
+    D_Product_Details {
+        int Product_ID PK
+        string Product
+        string Discount_Band
+        float Sale_Price
+        int Units_Sold
+        float Manufacturing_Price
+    }
+
+    D_Discounts {
+        int Product_ID PK
+        string Product
+        string Discount_Band
+        float Discount
+    }
+
+    D_Details {
+        int Product_ID FK
+        string Segment
+        string Country
+        int Month_Number
+        string Month_Name
+        int Year
+        date Date
+    }
+
+    D_Calendar {
+        date Date PK
+        int Year
+        int Month_Number
+        string Month_Name
+        int Quarter
+        int Weekday
+        string Weekday_Name
+        int Week_of_Year
+        string Year-Month
+    }
+
+    F_Sales {
+        int SK_ID PK
+        int Product_ID FK
+        string Product
+        int Units_Sold
+        float Sales_Price
+        string Discount_Band
+        string Segment
+        string Country
+        float Profit
+        date Date FK
+    }

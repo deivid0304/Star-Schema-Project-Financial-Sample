@@ -1,0 +1,15 @@
+D_Calendar = 
+ADDCOLUMNS(
+    CALENDAR(
+        MIN(Financials[Date]),
+        MAX(Financials[Date])
+    ),
+    "Year", YEAR([Date]),
+    "Month Number", MONTH([Date]),
+    "Month Name", FORMAT([Date], "MMMM"),
+    "Quarter", QUARTER([Date]),
+    "Weekday", WEEKDAY([Date]),
+    "Weekday Name", FORMAT([Date], "DDDD"),
+    "Week of Year", WEEKNUM([Date]),
+    "Year-Month", FORMAT([Date], "YYYY-MM")
+)
